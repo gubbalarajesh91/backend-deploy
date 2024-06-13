@@ -21,6 +21,31 @@ pipeline {
                 }
             }
         }
+        stage('Init') {
+            steps {
+                ssh """
+                    cd terraform
+                    terraform init
+                """
+            }
+        }
+        stage('Plan') {
+            steps {
+                ssh """
+                    cd terraform
+                    terraform plan -var="app_version=${params.appVersion}"
+                """
+            }
+        }
+        // stage('Deploy') {
+        //     steps {
+        //         ssh """
+        //             cd terraform
+        //             terraform apply -auto-approve
+        //         """
+        //     }
+        // }
+
     }
 
 

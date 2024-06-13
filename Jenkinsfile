@@ -18,9 +18,6 @@ pipeline {
             steps {
                 script{
                     echo "Application version: ${params.appVersion}"
-                    packageJson = readJSON file: 'package.json'
-                    appVersion = packageJson.version                        //variable assigned
-                    echo "Application version is $appVersion"
                 }
             }
         }

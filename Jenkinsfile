@@ -37,14 +37,14 @@ pipeline {
                 """
             }
         }
-        // stage('Deploy') {
-        //     steps {
-        //         ssh """
-        //             cd terraform
-        //             terraform apply -auto-approve
-        //         """
-        //     }
-        // }
+        stage('Deploy') {
+            steps {
+                ssh """
+                    cd terraform
+                    terraform apply -auto-approve -var="app_version=${params.appVersion}"
+                """
+            }
+        }
 
     }
 

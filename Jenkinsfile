@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Init') {
             steps {
-                ssh """
+                sh """
                     cd terraform
                     terraform init
                 """
@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Plan') {
             steps {
-                ssh """
+                sh """
                     cd terraform
                     terraform plan -var="app_version=${params.appVersion}"
                 """
